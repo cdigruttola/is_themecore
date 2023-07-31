@@ -8,6 +8,7 @@ use PrestaShopBundle\Form\Admin\Type\MultistoreConfigurationType;
 use PrestaShopBundle\Form\Admin\Type\SwitchType;
 use PrestaShopBundle\Form\Admin\Type\TranslatorAwareType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -88,6 +89,14 @@ class GeneralType extends TranslatorAwareType
                     'required' => false,
                     'label' => $this->trans('Enable debug mode for partytown', 'Modules.isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_DEBUG_PARTY_TOWN,
+                ]
+            )
+            ->add('google_maps_api_key',
+                TextType::class,
+                [
+                    'required' => true,
+                    'label' => $this->trans('Google Maps API Key', 'Modules.isthemecore.Admin'),
+                    'multistore_configuration_key' => GeneralConfiguration::THEMECORE_GOOGLE_MAPS_API_KEY,
                 ]
             );
     }

@@ -47,6 +47,7 @@ class Is_themecore extends Module
         'objectShopUrlAddAfter',
         'objectShopUrlUpdateAfter',
         'objectShopUrlDeleteAfter',
+        'actionBuildFrontEndObject'
     ];
 
     /**

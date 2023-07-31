@@ -19,6 +19,7 @@ final class GeneralConfiguration extends AbstractMultistoreConfiguration
         'preload_css',
         'load_party_town',
         'debug_party_town',
+        'google_maps_api_key'
     ];
 
     /**
@@ -29,6 +30,7 @@ final class GeneralConfiguration extends AbstractMultistoreConfiguration
     public const THEMECORE_PRELOAD_CSS = 'THEMECORE_PRELOAD_CSS';
     public const THEMECORE_LOAD_PARTY_TOWN = 'THEMECORE_LOAD_PARTY_TOWN';
     public const THEMECORE_DEBUG_PARTY_TOWN = 'THEMECORE_DEBUG_PARTY_TOWN';
+    public const THEMECORE_GOOGLE_MAPS_API_KEY = 'THEMECORE_GOOGLE_MAPS_API_KEY';
 
     /**
      * @var array<string, string>
@@ -39,6 +41,7 @@ final class GeneralConfiguration extends AbstractMultistoreConfiguration
         'preload_css' => self::THEMECORE_PRELOAD_CSS,
         'load_party_town' => self::THEMECORE_LOAD_PARTY_TOWN,
         'debug_party_town' => self::THEMECORE_DEBUG_PARTY_TOWN,
+        'google_maps_api_key' => self::THEMECORE_GOOGLE_MAPS_API_KEY,
     ];
 
     /**
@@ -127,6 +130,7 @@ final class GeneralConfiguration extends AbstractMultistoreConfiguration
             ->setAllowedTypes('early_hints', 'bool')
             ->setAllowedTypes('preload_css', 'bool')
             ->setAllowedTypes('load_party_town', 'bool')
-            ->setAllowedTypes('debug_party_town', 'bool');
+            ->setAllowedTypes('debug_party_town', 'bool')
+            ->setAllowedTypes('google_maps_api_key', 'string');
     }
 }
