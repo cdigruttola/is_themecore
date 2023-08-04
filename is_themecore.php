@@ -27,6 +27,7 @@ class Is_themecore extends Module
         GeneralConfiguration::THEMECORE_PRELOAD_CSS => false,
         GeneralConfiguration::THEMECORE_LOAD_PARTY_TOWN => false,
         GeneralConfiguration::THEMECORE_DEBUG_PARTY_TOWN => false,
+        GeneralConfiguration::THEMECORE_SHOW_PRODUCT_DETAILS => true,
         WebpConfiguration::THEMECORE_WEBP_ENABLED => false,
         WebpConfiguration::THEMECORE_WEBP_QUALITY => 90,
         WebpConfiguration::THEMECORE_WEBP_CONVERTER => null,
@@ -47,7 +48,8 @@ class Is_themecore extends Module
         'objectShopUrlAddAfter',
         'objectShopUrlUpdateAfter',
         'objectShopUrlDeleteAfter',
-        'actionBuildFrontEndObject'
+        'actionBuildFrontEndObject',
+        'actionFrontControllerSetVariables'
     ];
 
     /**
@@ -70,12 +72,12 @@ class Is_themecore extends Module
         $this->displayName = $this->trans(
             'Theme core module',
             [],
-            'Modules.isthemecore.Admin'
+            'Modules.Isthemecore.Admin'
         );
         $this->description = $this->trans(
             'Required for theme to work.',
             [],
-            'Modules.isthemecore.Admin'
+            'Modules.Isthemecore.Admin'
         );
 
         $this->tabs = [
@@ -86,7 +88,7 @@ class Is_themecore extends Module
                 'parent_class_name' => 'CONFIGURE',
                 'visible' => false,
                 'wording' => 'Theme core module settings',
-                'wording_domain' => 'Modules.isthemecore.Admin',
+                'wording_domain' => 'Modules.Isthemecore.Admin',
             ],
         ];
 

@@ -18,11 +18,16 @@ class Header extends AbstractHook
 {
     public const HOOK_LIST = [
         'displayHeader',
-        'actionBuildFrontEndObject'
+        'actionBuildFrontEndObject',
+        'actionFrontControllerSetVariables'
     ];
 
     public function hookActionBuildFrontEndObject($params) {
         $params['obj']['configuration']['google'] = \Configuration::get(GeneralConfiguration::THEMECORE_GOOGLE_MAPS_API_KEY);
+    }
+
+    public function hookActionFrontControllerSetVariables($params) {
+        return ['show_product_details' => \Configuration::get(GeneralConfiguration::THEMECORE_SHOW_PRODUCT_DETAILS)];
     }
 
     public function hookDisplayHeader(): string

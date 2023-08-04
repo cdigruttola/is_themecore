@@ -53,7 +53,7 @@ class GeneralType extends TranslatorAwareType
                 ChoiceType::class,
                 [
                     'choices' => $this->displayListChoices,
-                    'label' => $this->trans('Default list display', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Default list display', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_DISPLAY_LIST,
                 ]
             )
@@ -61,8 +61,8 @@ class GeneralType extends TranslatorAwareType
                 SwitchType::class,
                 [
                     'required' => false,
-                    'label' => $this->trans('Early hints (HTTP 103) enabled', 'Modules.isthemecore.Admin'),
-                    'help' => $this->trans('Cloudflare CDN, Early hints option have to enabled. <a href="https://developers.cloudflare.com/cache/about/early-hints/">More information</a>', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Early hints (HTTP 103) enabled', 'Modules.Isthemecore.Admin'),
+                    'help' => $this->trans('Cloudflare CDN, Early hints option have to enabled. <a href="https://developers.cloudflare.com/cache/about/early-hints/">More information</a>', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_EARLY_HINTS,
                 ]
             )
@@ -70,7 +70,7 @@ class GeneralType extends TranslatorAwareType
                 SwitchType::class,
                 [
                     'required' => false,
-                    'label' => $this->trans('Preload css enabled, only working with CCC for css option enabled', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Preload css enabled, only working with CCC for css option enabled', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_PRELOAD_CSS,
                 ]
             )
@@ -78,8 +78,8 @@ class GeneralType extends TranslatorAwareType
                 SwitchType::class,
                 [
                     'required' => false,
-                    'label' => $this->trans('Load partytown script', 'Modules.isthemecore.Admin'),
-                    'help' => $this->trans('Be aware that partytown is still beta. Make sure that everything is working as expected before pushing it to your production store.', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Load partytown script', 'Modules.Isthemecore.Admin'),
+                    'help' => $this->trans('Be aware that partytown is still beta. Make sure that everything is working as expected before pushing it to your production store.', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_LOAD_PARTY_TOWN,
                 ]
             )
@@ -87,15 +87,23 @@ class GeneralType extends TranslatorAwareType
                 SwitchType::class,
                 [
                     'required' => false,
-                    'label' => $this->trans('Enable debug mode for partytown', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Enable debug mode for partytown', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_DEBUG_PARTY_TOWN,
+                ]
+            )
+            ->add('show_product_details',
+                SwitchType::class,
+                [
+                    'required' => false,
+                    'label' => $this->trans('Show Product Details Tab', 'Modules.Isthemecore.Admin'),
+                    'multistore_configuration_key' => GeneralConfiguration::THEMECORE_SHOW_PRODUCT_DETAILS,
                 ]
             )
             ->add('google_maps_api_key',
                 TextType::class,
                 [
                     'required' => true,
-                    'label' => $this->trans('Google Maps API Key', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Google Maps API Key', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_GOOGLE_MAPS_API_KEY,
                 ]
             );

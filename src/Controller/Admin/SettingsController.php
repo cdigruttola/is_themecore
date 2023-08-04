@@ -134,7 +134,7 @@ class SettingsController extends FrameworkBundleAdminController
         $time_end = microtime(true);
         $execution_time = round($time_end - $time_start, 2);
 
-        $this->addFlash('success', $this->trans('%1$s - webp images has been erased successfully in %2$ss', 'Modules.isthemecore.Admin', [$eraser->getFilesCount(), $execution_time]));
+        $this->addFlash('success', $this->trans('%1$s - webp images has been erased successfully in %2$ss', 'Modules.Isthemecore.Admin', [$eraser->getFilesCount(), $execution_time]));
 
         return $this->redirectToRoute('is_themecore_module_settings');
     }

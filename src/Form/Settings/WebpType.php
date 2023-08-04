@@ -79,7 +79,7 @@ class WebpType extends TranslatorAwareType
 
         if ($webpDisabled) {
             $extraAttributes = [
-                'alert_message' => $this->trans('Webp converters not available contact your admin or hosting provider.', 'Modules.isthemecore.Admin'),
+                'alert_message' => $this->trans('Webp converters not available contact your admin or hosting provider.', 'Modules.Isthemecore.Admin'),
                 'alert_type' => 'danger',
                 'alert_position' => 'append',
             ];
@@ -91,7 +91,7 @@ class WebpType extends TranslatorAwareType
                 array_merge(
                     [
                         'required' => false,
-                        'label' => $this->trans('Enable WEBP', 'Modules.isthemecore.Admin'),
+                        'label' => $this->trans('Enable WEBP', 'Modules.Isthemecore.Admin'),
                         'disabled' => $webpDisabled,
                     ],
                     $extraAttributes
@@ -101,7 +101,7 @@ class WebpType extends TranslatorAwareType
                 SwitchType::class,
                 [
                     'required' => false,
-                    'label' => $this->trans('Enable better RGB->YUV color conversion', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Enable better RGB->YUV color conversion', 'Modules.Isthemecore.Admin'),
                     'disabled' => $webpDisabled,
                 ]
             )
@@ -109,8 +109,8 @@ class WebpType extends TranslatorAwareType
                 TextType::class,
                 [
                     'required' => false,
-                    'label' => $this->trans('Webp quality', 'Modules.isthemecore.Admin'),
-                    'help' => $this->trans('Range 1-100', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Webp quality', 'Modules.Isthemecore.Admin'),
+                    'help' => $this->trans('Range 1-100', 'Modules.Isthemecore.Admin'),
                     'disabled' => $webpDisabled,
                     'constraints' => [
                         $this->getRangeConstraint(1, 100),
@@ -122,7 +122,7 @@ class WebpType extends TranslatorAwareType
                 ChoiceType::class,
                 [
                     'choices' => $this->convertersList,
-                    'label' => $this->trans('Webp converter options', 'Modules.isthemecore.Admin'),
+                    'label' => $this->trans('Webp converter options', 'Modules.Isthemecore.Admin'),
                     'disabled' => $webpDisabled,
                     'expanded' => true,
                     'multiple' => false,
@@ -130,12 +130,12 @@ class WebpType extends TranslatorAwareType
                         return ['disabled' => $this->convertersListFull[$choice]['disabled']];
                     },
                     'choice_label' => function ($choice) {
-                        return $this->convertersListFull[$choice]['label'] . ($this->convertersListFull[$choice]['disabled'] ? '<span class="ml-1 badge badge-danger">' . $this->trans('not available', 'Modules.isthemecore.Admin') . '</span>' : '');
+                        return $this->convertersListFull[$choice]['label'] . ($this->convertersListFull[$choice]['disabled'] ? '<span class="ml-1 badge badge-danger">' . $this->trans('not available', 'Modules.Isthemecore.Admin') . '</span>' : '');
                     },
                 ]
             )
             ->add('erase_all_webp', IconButtonType::class, [
-                'label' => $this->trans('Erase all webp images', 'Modules.isthemecore.Admin'),
+                'label' => $this->trans('Erase all webp images', 'Modules.Isthemecore.Admin'),
                 'type' => 'link',
                 'icon' => 'delete',
                 'attr' => [
@@ -149,7 +149,7 @@ class WebpType extends TranslatorAwareType
                 ],
             ])
             ->add('erase_product_webp', IconButtonType::class, [
-                'label' => $this->trans('Erase all product webp images', 'Modules.isthemecore.Admin'),
+                'label' => $this->trans('Erase all product webp images', 'Modules.Isthemecore.Admin'),
                 'type' => 'link',
                 'icon' => 'delete',
                 'attr' => [
@@ -163,7 +163,7 @@ class WebpType extends TranslatorAwareType
                 ],
             ])
             ->add('erase_modules_webp', IconButtonType::class, [
-                'label' => $this->trans('Erase all modules webp images', 'Modules.isthemecore.Admin'),
+                'label' => $this->trans('Erase all modules webp images', 'Modules.Isthemecore.Admin'),
                 'type' => 'link',
                 'icon' => 'delete',
                 'attr' => [
@@ -177,7 +177,7 @@ class WebpType extends TranslatorAwareType
                 ],
             ])
             ->add('erase_cms_webp', IconButtonType::class, [
-                'label' => $this->trans('Erase all CMS webp images', 'Modules.isthemecore.Admin'),
+                'label' => $this->trans('Erase all CMS webp images', 'Modules.Isthemecore.Admin'),
                 'type' => 'link',
                 'icon' => 'delete',
                 'attr' => [
@@ -191,7 +191,7 @@ class WebpType extends TranslatorAwareType
                 ],
             ])
             ->add('erase_themes_webp', IconButtonType::class, [
-                'label' => $this->trans('Erase all themes webp images', 'Modules.isthemecore.Admin'),
+                'label' => $this->trans('Erase all themes webp images', 'Modules.Isthemecore.Admin'),
                 'type' => 'link',
                 'icon' => 'delete',
                 'attr' => [
@@ -222,7 +222,7 @@ class WebpType extends TranslatorAwareType
     private function getNotBlankConstraint()
     {
         return new NotBlank([
-            'message' => $this->trans('This field cannot be empty.', 'Modules.isthemecore.Admin'),
+            'message' => $this->trans('This field cannot be empty.', 'Modules.Isthemecore.Admin'),
         ]);
     }
 
@@ -236,7 +236,7 @@ class WebpType extends TranslatorAwareType
             'max' => $max,
             'invalidMessage' => $this->trans(
                 'This field value have to be between %min% and %max%.',
-                'Modules.isthemecore.Admin',
+                'Modules.Isthemecore.Admin',
                 [
                     '%min%' => $min,
                     '%max%' => $max,
