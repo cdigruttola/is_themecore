@@ -25,10 +25,16 @@ class StructuredDataShopPresenter implements StructuredDataPresenterInterface
     private function presentShopData(): void
     {
         $this->presentedData['@context'] = 'http://schema.org';
-        $this->presentedData['@type'] = 'Organization';
+        $this->presentedData['@type'] = 'Bakery';
         $this->presentedData['name'] = $this->shopData['name'];
         $this->presentedData['url'] = $this->context->link->getPageLink('index');
+        $this->presentedData['priceRange'] = '$ - $$';
+        $this->presentedData['servesCuisine'] = 'Italian';
         $this->presentedData['logo'] = [
+            '@type' => 'ImageObject',
+            'url' => $this->shopData['logo'],
+        ];
+        $this->presentedData['image'] = [
             '@type' => 'ImageObject',
             'url' => $this->shopData['logo'],
         ];
@@ -38,7 +44,10 @@ class StructuredDataShopPresenter implements StructuredDataPresenterInterface
                 '@type' => 'ContactPoint',
                 'telephone' => $this->shopData['phone'],
                 'contactType' => 'customer service',
+                'email' => $this->shopData['email'],
+
             ];
+            $this->presentedData['telephone'] = $this->shopData['phone'];
         }
 
         $address = $this->shopData['address'];
