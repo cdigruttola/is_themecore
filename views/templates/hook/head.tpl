@@ -37,8 +37,10 @@
   </script>
 {/if}
 
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
+        if ($('html').prop('lang') === '') {
             $('html').prop('lang', '{$language.iso_code}');
+        }
     });
 </script>
