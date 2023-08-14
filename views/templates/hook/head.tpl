@@ -39,8 +39,6 @@
 
 <script>
     $(document).ready(function () {
-        if ($('html').prop('lang') === '') {
             $('html').prop('lang', '{$language.iso_code}');
-        }
     });
 </script>
