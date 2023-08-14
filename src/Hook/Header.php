@@ -2,6 +2,7 @@
 
 namespace Oksydan\Module\IsThemeCore\Hook;
 
+use Media;
 use Oksydan\Module\IsThemeCore\Core\Breadcrumbs\ThemeBreadcrumbs;
 use Oksydan\Module\IsThemeCore\Core\ListingDisplay\ThemeListDisplay;
 use Oksydan\Module\IsThemeCore\Core\Partytown\PartytownScript;
@@ -53,6 +54,12 @@ class Header extends AbstractHook
         ]);
 
         $this->context->controller->addJS($this->module->getPathUri() . 'views/js/lang.js');
+        Media::addJsDef(
+            [
+                'lang' => $this->context->language
+            ]
+        );
+
         return $this->module->fetch('module:is_themecore/views/templates/hook/head.tpl');
     }
 

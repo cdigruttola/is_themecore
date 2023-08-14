@@ -27,6 +27,6 @@ import prestashop from 'prestashop';
 
 $(document).ready(function () {
     if ($('html').prop('lang') === '') {
-        $('html').prop('lang', prestashop.language.iso_code);
+        $('html').prop('lang', lang.iso_code);
     }
 });
