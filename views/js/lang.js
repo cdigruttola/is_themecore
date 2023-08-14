@@ -23,7 +23,6 @@
  *
  *
  */
-import prestashop from 'prestashop';
 
 $(document).ready(function () {
     if ($('html').prop('lang') === '') {
