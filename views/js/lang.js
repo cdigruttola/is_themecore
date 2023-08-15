@@ -24,7 +24,7 @@
  *
  */
 
-$(document).ready(function () {
+$(document).load(function () {
     if ($('html').prop('lang') === '') {
         $('html').prop('lang', lang.iso_code);
     }
