@@ -8,6 +8,8 @@ use Oksydan\Module\IsThemeCore\Core\ListingDisplay\ThemeListDisplay;
 use Oksydan\Module\IsThemeCore\Core\Partytown\PartytownScript;
 use Oksydan\Module\IsThemeCore\Core\Partytown\PartytownScriptUriResolver;
 use Oksydan\Module\IsThemeCore\Core\StructuredData\BreadcrumbStructuredData;
+use Oksydan\Module\IsThemeCore\Core\StructuredData\Presenter\StructuredDataPresenterInterface;
+use Oksydan\Module\IsThemeCore\Core\StructuredData\Presenter\StructuredDataProductPresenter;
 use Oksydan\Module\IsThemeCore\Core\StructuredData\ProductStructuredData;
 use Oksydan\Module\IsThemeCore\Core\StructuredData\ShopStructuredData;
 use Oksydan\Module\IsThemeCore\Core\StructuredData\StructuredDataInterface;
@@ -20,8 +22,13 @@ class Header extends AbstractHook
     public const HOOK_LIST = [
         'displayHeader',
         'actionBuildFrontEndObject',
-        'actionFrontControllerSetVariables'
+        'actionFrontControllerSetVariables',
+        'displayMetadataMiniature'
     ];
+
+    public function hookDisplayMetadataMiniature($params) {
+        return $this->getStructuredDataForListing($params['product']);
+    }
 
     public function hookActionBuildFrontEndObject($params) {
         $params['obj']['configuration']['google'] = \Configuration::get(GeneralConfiguration::THEMECORE_GOOGLE_MAPS_API_KEY);
@@ -142,5 +149,32 @@ class Header extends AbstractHook
         }
 
         return $dataArray;
+    }
+
+    /**
+     * @param $presentedProduct
+     * @return string
+     * @throws \Exception
+     */
+    private function getStructuredDataForListing($presentedProduct) : string
+    {
+        $data = '';
+        try {
+            $productData = $this->module->get(StructuredDataProductPresenter::class);
+        } catch (\Exception $e) {
+            $productData = null;
+        }
+
+        if ($productData instanceof StructuredDataPresenterInterface) {
+            $jsonData = $productData->present($presentedProduct);
+            if (!empty($jsonData)) {
+                $data = json_encode($jsonData, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            }
+        }
+        $this->context->smarty->assign([
+            'jsonElem' => $data,
+        ]);
+
+        return $this->module->fetch('module:is_themecore/views/templates/hook/metadataMiniature.tpl');
     }
 }
