@@ -97,7 +97,7 @@ class WebpGenerator
                     'vary-accept' => true,
                     // other headers can be toggled...
                 ],
-                'cache-control-header' => 'max-age=2592000',
+                'cache-control-header' => 'public, max-age=2592000',
             ],
             'convert' => [
                 'stack-converters' => [$this->getConverter()],
