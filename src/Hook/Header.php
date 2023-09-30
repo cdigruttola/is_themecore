@@ -60,13 +60,6 @@ class Header extends AbstractHook
             'partytownScriptUri' => $this->getPartytownScriptUri(),
         ]);
 
-        $this->context->controller->addJS($this->module->getPathUri() . 'views/js/lang.js');
-        Media::addJsDef(
-            [
-                'lang' => $this->context->language
-            ]
-        );
-
         return $this->module->fetch('module:is_themecore/views/templates/hook/head.tpl');
     }
 
