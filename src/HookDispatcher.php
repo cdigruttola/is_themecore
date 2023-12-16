@@ -7,6 +7,7 @@ use Oksydan\Module\IsThemeCore\Hook\Assets;
 use Oksydan\Module\IsThemeCore\Hook\Header;
 use Oksydan\Module\IsThemeCore\Hook\Htaccess;
 use Oksydan\Module\IsThemeCore\Hook\HtmlOutput;
+use Oksydan\Module\IsThemeCore\Hook\PresentProduct;
 use Oksydan\Module\IsThemeCore\Hook\Smarty;
 
 class HookDispatcher
@@ -17,6 +18,7 @@ class HookDispatcher
         Smarty::class,
         HtmlOutput::class,
         Htaccess::class,
+        PresentProduct::class
     ];
 
     /**
