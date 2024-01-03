@@ -35,7 +35,15 @@ class PresentProduct extends AbstractHook
         $symbols = $priceSpecification->getSymbolsByNumberingSystem(Locale::NUMBERING_SYSTEM_LATIN);
         $decimal_char = $symbols->getDecimal();
 
-        $price = str_replace($decimal_char, $decimal_char . '<span class="decimal">', $price) . '</span>';
+        if ($decimal_char === '.') {
+            $pattern = "/(\d+)(\.)(\d+)(.*)/i";
+        } else {
+            $pattern = "/(\d+)($decimal_char)(\d+)(.*)/i";
+        }
+
+        $replacement = "$1$2<span class='decimal'>$3</span>$4";
+
+        $price = preg_replace($pattern, $replacement, $price);
         $params['presentedProduct']['price_with_lower_decimal'] = $price;
     }
 
