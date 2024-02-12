@@ -102,7 +102,7 @@ class GeneralType extends TranslatorAwareType
             ->add('google_maps_api_key',
                 TextType::class,
                 [
-                    'required' => true,
+                    'required' => false,
                     'label' => $this->trans('Google Maps API Key', 'Modules.Isthemecore.Admin'),
                     'multistore_configuration_key' => GeneralConfiguration::THEMECORE_GOOGLE_MAPS_API_KEY,
                 ]
