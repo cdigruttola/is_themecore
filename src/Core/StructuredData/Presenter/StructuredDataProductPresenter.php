@@ -52,7 +52,7 @@ class StructuredDataProductPresenter implements StructuredDataPresenterInterface
                 '@context' => 'https://schema.org',
                 '@type' => 'QuantitativeValue',
                 'value' => $this->productData['weight'],
-                'unitCode' => $this->productData['weight_unit'],
+                'unitCode' => strtolower($this->productData['weight_unit']),
             ];
         }
     }
@@ -202,7 +202,7 @@ class StructuredDataProductPresenter implements StructuredDataPresenterInterface
             'weight' => [
                 '@type' => 'QuantitativeValue',
                 'value' => $this->productData['weight'],
-                'unitCode' => $this->productData['weight_unit'],
+                'unitCode' => strtolower($this->productData['weight_unit']),
             ],
             'shippingDestination' => [
                 '@type' => 'DefinedRegion',
