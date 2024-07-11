@@ -199,6 +199,11 @@ class StructuredDataProductPresenter implements StructuredDataPresenterInterface
                 'value' => '7.16',
                 'currency' => $this->context->currency->iso_code,
             ],
+            'weight' => [
+                '@type' => 'QuantitativeValue',
+                'value' => $this->productData['weight'],
+                'unitCode' => $this->productData['weight_unit'],
+            ],
             'shippingDestination' => [
                 '@type' => 'DefinedRegion',
                 'addressCountry' => 'IT',
