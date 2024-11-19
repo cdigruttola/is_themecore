@@ -20,6 +20,7 @@ use Oksydan\Module\IsThemeCore\Form\Settings\WebpConfiguration;
 class Header extends AbstractHook
 {
     public const HOOK_LIST = [
+        'actionFrontControllerInitBefore',
         'displayHeader',
         'actionBuildFrontEndObject',
         'actionFrontControllerSetVariables',
@@ -34,8 +35,21 @@ class Header extends AbstractHook
         $params['obj']['configuration']['google'] = \Configuration::get(GeneralConfiguration::THEMECORE_GOOGLE_MAPS_API_KEY);
     }
 
-    public function hookActionFrontControllerSetVariables($params) {
+    public function hookActionFrontControllerSetVariables($params)
+    {
         return ['show_product_details' => \Configuration::get(GeneralConfiguration::THEMECORE_SHOW_PRODUCT_DETAILS)];
+    }
+
+    public function hookActionFrontControllerInitBefore(): void
+    {
+        $themeListDisplay = new ThemeListDisplay();
+        $this->context->smarty->assign([
+            'listingDisplayType' => $themeListDisplay->getDisplay(),
+            'preloadCss' => \Configuration::get(GeneralConfiguration::THEMECORE_PRELOAD_CSS),
+            'webpEnabled' => \Configuration::get(WebpConfiguration::THEMECORE_WEBP_ENABLED),
+            'loadPartytown' => (bool) \Configuration::get(GeneralConfiguration::THEMECORE_LOAD_PARTY_TOWN),
+            'debugPartytown' => (bool) \Configuration::get(GeneralConfiguration::THEMECORE_DEBUG_PARTY_TOWN),
+        ]);
     }
 
     public function hookDisplayHeader(): string
@@ -50,12 +64,7 @@ class Header extends AbstractHook
         }
 
         $this->context->smarty->assign([
-            'listingDisplayType' => $themeListDisplay->getDisplay(),
-            'preloadCss' => \Configuration::get(GeneralConfiguration::THEMECORE_PRELOAD_CSS),
-            'webpEnabled' => \Configuration::get(WebpConfiguration::THEMECORE_WEBP_ENABLED),
             'jsonData' => $this->getStructuredData(),
-            'loadPartytown' => (bool) \Configuration::get(GeneralConfiguration::THEMECORE_LOAD_PARTY_TOWN),
-            'debugPartytown' => (bool) \Configuration::get(GeneralConfiguration::THEMECORE_DEBUG_PARTY_TOWN),
             'partytownScript' => $this->getPartytownScript(),
             'partytownScriptUri' => $this->getPartytownScriptUri(),
         ]);
