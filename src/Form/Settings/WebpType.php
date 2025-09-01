@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Range;
 
@@ -234,14 +234,6 @@ class WebpType extends TranslatorAwareType
         return new Range([
             'min' => $min,
             'max' => $max,
-            'invalidMessage' => $this->trans(
-                'This field value have to be between %min% and %max%.',
-                'Modules.Isthemecore.Admin',
-                [
-                    '%min%' => $min,
-                    '%max%' => $max,
-                ]
-            ),
         ]);
     }
 }

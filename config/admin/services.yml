@@ -4,6 +4,14 @@ services:
   _defaults:
     public: true
 
+  Oksydan\Module\IsThemeCore\Controller\Admin\SettingsController:
+    public: true
+    autowire: true
+    autoconfigure: true
+    class: Oksydan\Module\IsThemeCore\Controller\Admin\SettingsController
+    arguments:
+      $htaccessGenerator: '@oksydan.module.is_themecore.core.htaccess.htaccess_generator'
+
   oksydan.module.is_themecore.form.settings.general_type:
     class: 'Oksydan\Module\IsThemeCore\Form\Settings\GeneralType'
     parent: "form.type.translatable.aware"
