@@ -4,6 +4,7 @@ namespace Oksydan\Module\IsThemeCore\Core\Smarty;
 
 use Oksydan\Module\IsThemeCore\Core\Webp\WebpPictureGenerator;
 use Oksydan\Module\IsThemeCore\Form\Settings\WebpConfiguration;
+use PrestaShop\PrestaShop\Core\Util\ColorBrightnessCalculator;
 
 class SmartyHelperFunctions
 {
@@ -93,6 +94,11 @@ class SmartyHelperFunctions
         }
 
         return $url;
+    }
+
+    public static function isBright($hex) {
+        $calculator = new ColorBrightnessCalculator();
+        return $calculator->isBright($hex);
     }
 
     public static function imagesBlock($params, $content, $smarty)

@@ -22,6 +22,10 @@ class Smarty extends AbstractHook
             $this->context->smarty->registerPlugin('function', 'appendParamToUrl', ['Oksydan\Module\IsThemeCore\Core\Smarty\SmartyHelperFunctions', 'appendParamToUrl']);
         }
 
+        if (!isset($this->context->smarty->registered_plugins['modifier']['isBright'])) {
+            $this->context->smarty->registerPlugin('modifier', 'isBright', ['Oksydan\Module\IsThemeCore\Core\Smarty\SmartyHelperFunctions', 'isBright']);
+        }
+
         if (!isset($this->context->smarty->registered_plugins['block']['images_block'])) {
             $this->context->smarty->registerPlugin('block', 'images_block', ['Oksydan\Module\IsThemeCore\Core\Smarty\SmartyHelperFunctions', 'imagesBlock']
             );
