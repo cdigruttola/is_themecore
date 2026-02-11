@@ -76,9 +76,12 @@ class StructuredDataShopPresenter implements StructuredDataPresenterInterface
                 if ($addressRegion) {
                     $addressLocality .= ($addressLocality != '' ? ', ' : '') . $addressRegion;
                 }
+                if ($country) {
+                    $addressLocality .= ($addressLocality != '' ? ', ' : '') . $country;
+                }
 
                 $this->presentedData['address']['addressLocality'] = $addressLocality;
-				$this->presentedData['address']['addressCountry'] = $country;
+				$this->presentedData['address']['addressCountry'] = 'IT';
             }
         }
     }
